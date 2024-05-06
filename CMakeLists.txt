@@ -80,9 +80,10 @@ set_target_properties(esm
     LINK_FLAGS "\
       -s WASM=1 \
       -s EXPORT_ES6=1 \
+      -s ENVIRONMENT=web,worker \
       -s MODULARIZE=1 \
       -s SINGLE_FILE=0 \
-      -s USE_ES6_IMPORT_META=1 \
+      -s USE_ES6_IMPORT_META=0 \
       -s ALLOW_MEMORY_GROWTH=1 \
       -s ASSERTIONS \
       -s NO_EXIT_RUNTIME=1 \
