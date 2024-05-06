@@ -5,6 +5,16 @@
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/LokiResearch/arrangement-2d-js.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/minitoine/arrangement-2d-js/context:javascript)
 [![License](https://img.shields.io/badge/License-MIT-green)](#license)
 
+## Fork notes
+
+Quick fork to use with Webpack and a simple .wasm loader.
+
+- Updated Boost library to 1.81 to avoid unary function reference error. Changed in CMakeLists and install_libraries.sh
+- Emscripten build that includes .wasm (not as inline bytecode in .js)
+- If some TS/webidl2ts error. Run npm install in directory to install local typescript
+- Added .wasm modules in build
+
+
 ## Examples
 
 - Arrangement demo [Link](https://LokiResearch.github.io/arrangement-2d-js/build-examples/ArrangementExample)
