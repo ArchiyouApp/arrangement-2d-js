@@ -24,9 +24,9 @@ set(TS_DEF_UMD_FILE ${MODULE_NAME}.umd.d.ts)
 
 # Include cgal and boost headers
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libraries/CGAL-5.4/include)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libraries/boost_1_79_0)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libraries/boost_1_81_0)
 set(CGAL_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/CGAL-5.4/include)
-set(BOOST_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/boost_1_79_0)
+set(BOOST_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/boost_1_81_0)
 
 # Get the source files
 file(GLOB_RECURSE CPP_FILES src/*.cpp)
@@ -72,7 +72,7 @@ add_library(common-objects OBJECT ${CPP_FILES} ${C_FILES} wrapper.cpp)
 add_executable(esm $<TARGET_OBJECTS:common-objects> ${TS_DEF_MOD_FILE})
 set_target_properties(esm
     PROPERTIES
-    ADDITIONAL_CLEAN_FILES "wrapper.cpp;glue.cpp;glue.js;${MODULE_NAME}.wasm"
+    ADDITIONAL_CLEAN_FILES "wrapper.cpp;glue.cpp;glue.js;" #${MODULE_NAME}.wasm"
     OUTPUT_NAME ${MODULE_NAME}.esm
     SUFFIX ".js"
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
@@ -81,7 +81,7 @@ set_target_properties(esm
       -s WASM=1 \
       -s EXPORT_ES6=1 \
       -s MODULARIZE=1 \
-      -s SINGLE_FILE=1 \
+      -s SINGLE_FILE=0 \
       -s USE_ES6_IMPORT_META=1 \
       -s ALLOW_MEMORY_GROWTH=1 \
       -s ASSERTIONS \
@@ -96,7 +96,7 @@ set_target_properties(esm
 add_executable(umd $<TARGET_OBJECTS:common-objects> ${TS_DEF_UMD_FILE})
 set_target_properties(umd
     PROPERTIES
-    ADDITIONAL_CLEAN_FILES "wrapper.cpp;glue.cpp;glue.js;${MODULE_NAME}.wasm"
+    ADDITIONAL_CLEAN_FILES "wrapper.cpp;glue.cpp;glue.js;" #${MODULE_NAME}.wasm"
     OUTPUT_NAME ${MODULE_NAME}.umd
     SUFFIX ".js"
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
@@ -104,7 +104,7 @@ set_target_properties(umd
     LINK_FLAGS "\
       -s WASM=1 \
       -s MODULARIZE=1 \
-      -s SINGLE_FILE=1 \
+      -s SINGLE_FILE=0 \
       -s ALLOW_MEMORY_GROWTH=1 \
       -s ASSERTIONS \
       -s NO_EXIT_RUNTIME=1 \

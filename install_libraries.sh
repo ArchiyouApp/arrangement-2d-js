@@ -19,8 +19,8 @@ echo "Done"
 
 ##################################### CGAL #####################################
 
-BOOST_VERSION=1.79.0
-BOOST_NAME=boost_1_79_0.tar.gz
+BOOST_VERSION=1.81.0
+BOOST_NAME=boost_1_81_0.tar.gz
 BOOST_URL=https://boostorg.jfrog.io/artifactory/main/release/$BOOST_VERSION/source/$BOOST_NAME
 
 echo "Downloading "$BOOST_NAME
